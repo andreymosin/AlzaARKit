@@ -14,20 +14,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var planeGeometry: SCNPlane?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+//        let scene = SCNScene(named: "art.scnassets/tv.dae")!
+//        sceneView.scene = scene
+        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +29,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingSessionConfiguration()
+        configuration.planeDetection = .horizontal
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -45,11 +40,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     // MARK: - ARSCNViewDelegate
@@ -62,6 +52,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if let anchor = anchor as? ARPlaneAnchor {
+            self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.y))
+            
+            if let planeGeometry = planeGeometry {
+                let planeNode = SCNNode(geometry: planeGeometry)
+                planeNode.position = SCNVector3Make(anchor.center.x, anchor.center.y, anchor.center.z)
+                planeNode.transform = SCNMatrix4MakeRotation(Float.pi / 2.0, 1, 0, 0)
+                sceneView.scene.rootNode.addChildNode(planeNode)
+            }
+            
+        }
+        
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -77,4 +82,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
 }

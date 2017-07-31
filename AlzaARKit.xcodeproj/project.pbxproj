@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01458E7A1F2FA17900E04962 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01458E791F2FA17900E04962 /* Plane.swift */; };
+		01458E7C1F2FA2BF00E04962 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01458E7B1F2FA2BF00E04962 /* logo.png */; };
 		01CFDEAC1F2F8754006DDEDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */; };
 		01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEAD1F2F8754006DDEDF /* art.scnassets */; };
 		01CFDEB01F2F8754006DDEDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFDEAF1F2F8754006DDEDF /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01458E791F2FA17900E04962 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		01458E7B1F2FA2BF00E04962 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../logo.png; sourceTree = "<group>"; };
 		01CFDEA81F2F8754006DDEDF /* AlzaARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzaARKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01CFDEAD1F2F8754006DDEDF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -37,6 +41,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01458E731F2F90B100E04962 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01458E741F2F90BA00E04962 /* TV */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01458E741F2F90BA00E04962 /* TV */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TV;
+			sourceTree = "<group>";
+		};
 		01CFDE9F1F2F8754006DDEDF = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +75,8 @@
 		01CFDEAA1F2F8754006DDEDF /* AlzaARKit */ = {
 			isa = PBXGroup;
 			children = (
+				01458E7B1F2FA2BF00E04962 /* logo.png */,
+				01458E731F2F90B100E04962 /* Models */,
 				01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */,
 				01CFDEAD1F2F8754006DDEDF /* art.scnassets */,
 				01CFDEAF1F2F8754006DDEDF /* ViewController.swift */,
@@ -63,6 +84,7 @@
 				01CFDEB41F2F8754006DDEDF /* Assets.xcassets */,
 				01CFDEB61F2F8754006DDEDF /* LaunchScreen.storyboard */,
 				01CFDEB91F2F8754006DDEDF /* Info.plist */,
+				01458E791F2FA17900E04962 /* Plane.swift */,
 			);
 			path = AlzaARKit;
 			sourceTree = "<group>";
@@ -126,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */,
+				01458E7C1F2FA2BF00E04962 /* logo.png in Resources */,
 				01CFDEB81F2F8754006DDEDF /* LaunchScreen.storyboard in Resources */,
 				01CFDEB51F2F8754006DDEDF /* Assets.xcassets in Resources */,
 				01CFDEB31F2F8754006DDEDF /* Main.storyboard in Resources */,
@@ -140,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01CFDEB01F2F8754006DDEDF /* ViewController.swift in Sources */,
+				01458E7A1F2FA17900E04962 /* Plane.swift in Sources */,
 				01CFDEAC1F2F8754006DDEDF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +340,7 @@
 				01CFDEBE1F2F8754006DDEDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
