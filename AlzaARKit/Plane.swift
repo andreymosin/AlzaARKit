@@ -20,14 +20,32 @@ class Plane: SCNNode {
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         super.init()
         
+        let planeNode = SCNNode(geometry: planeGeometry)
+        planeNode.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
+        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        addChildNode(planeNode)
+        
         let material = SCNMaterial()
-        let image = UIImage(named: "logo")
-        material.diffuse.contents = image
+        material.diffuse.contents = UIColor.blue.withAlphaComponent(0.5)
         planeGeometry.materials = [material]
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(with anchor: ARPlaneAnchor) {
+        self.planeGeometry.width = CGFloat(anchor.extent.x)
+        self.planeGeometry.height = CGFloat(anchor.extent.z)
+        
+        self.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
+        setTextureScale()
+    }
+    
+    func setTextureScale() {
+        planeGeometry.materials.first?.diffuse.contentsTransform = SCNMatrix4MakeScale(Float(planeGeometry.width), Float(planeGeometry.height), 1)
+        planeGeometry.materials.first?.diffuse.wrapS = .repeat
+        planeGeometry.materials.first?.diffuse.wrapT = .repeat
     }
     
 }

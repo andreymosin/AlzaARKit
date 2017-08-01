@@ -15,6 +15,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var planeGeometry: SCNPlane?
+    var planes: [UUID : Plane] = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,17 +57,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
-            self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.y))
+            let plane = Plane(anchor: anchor)
+            node.addChildNode(plane)
             
-            if let planeGeometry = planeGeometry {
-                let planeNode = SCNNode(geometry: planeGeometry)
-                planeNode.position = SCNVector3Make(anchor.center.x, anchor.center.y, anchor.center.z)
-                planeNode.transform = SCNMatrix4MakeRotation(Float.pi / 2.0, 1, 0, 0)
-                sceneView.scene.rootNode.addChildNode(planeNode)
-            }
-            
+            self.planes[anchor.identifier] = plane
         }
-        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        if let plane = self.planes[anchor.identifier], let anchor = anchor as? ARPlaneAnchor {
+            plane.update(with: anchor)
+        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
