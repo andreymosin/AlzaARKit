@@ -21,9 +21,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
-//        let scene = SCNScene(named: "art.scnassets/tv.dae")!
-//        sceneView.scene = scene
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap(from:)))
+        sceneView.addGestureRecognizer(tapGR)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,23 +44,37 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
+    
+    @objc func handleTap(from sender: UITapGestureRecognizer) {
+        let point = sender.location(in: sceneView)
+        
+        let hitTestRes = sceneView.hitTest(point, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
+        
+        if hitTestRes.isEmpty {
+            return
+        }
+        placeModel(on: hitTestRes.first!)
+    }
+    
+    func placeModel(on plane: ARHitTestResult) {
+        
+        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true) {
+            model.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y, plane.worldTransform.columns.3.z)
+            model.rotateCool()
+            model.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+            model.physicsBody?.mass = 2
+            self.sceneView.scene.rootNode.addChildNode(model)
+        }
+    }
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
+    var nbool = false
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
             let plane = Plane(anchor: anchor)
             node.addChildNode(plane)
-            
             self.planes[anchor.identifier] = plane
         }
     }

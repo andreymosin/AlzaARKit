@@ -13,20 +13,22 @@ import ARKit
 class Plane: SCNNode {
     
     let anchor: ARPlaneAnchor
-    let planeGeometry: SCNPlane
+    let planeGeometry: SCNBox
     
     init(anchor: ARPlaneAnchor) {
         self.anchor = anchor
-        self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
+        self.planeGeometry = SCNBox(width: CGFloat(anchor.extent.x), height: 0.01, length: CGFloat(anchor.extent.z), chamferRadius: 0)
         super.init()
         
         let planeNode = SCNNode(geometry: planeGeometry)
         planeNode.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
-        planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+        planeNode.rotateCool()
+        
+        planeNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: planeGeometry, options: nil))
         addChildNode(planeNode)
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.blue.withAlphaComponent(0.5)
+        material.diffuse.contents = UIColor.blue.withAlphaComponent(0.8)
         planeGeometry.materials = [material]
     }
     
@@ -48,4 +50,10 @@ class Plane: SCNNode {
         planeGeometry.materials.first?.diffuse.wrapT = .repeat
     }
     
+}
+
+extension SCNNode {
+    func rotateCool() {
+        self.transform = SCNMatrix4MakeRotation(-Float.pi / 2, 1, 0, 0)
+    }
 }
