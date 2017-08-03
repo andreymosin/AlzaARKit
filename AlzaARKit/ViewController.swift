@@ -17,14 +17,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var planeGeometry: SCNPlane?
     var planes: [UUID : Plane] = [:]
     
+    var modelPlaced: SCNNode?
+    var modelOrigin: SCNVector3?
+    var modelPos: SCNVector3? {
+        didSet {
+            if let pos = modelPos {
+                modelPlaced?.worldPosition = pos
+                
+                
+                print("Current Position: \(modelPlaced?.position)")
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
         
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap(from:)))
-        sceneView.addGestureRecognizer(tapGR)
+        sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(from:))))
+        sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePan(from:))))
+        
+        
+        self.sceneView.automaticallyUpdatesLighting = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +63,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func handleTap(from sender: UITapGestureRecognizer) {
         let point = sender.location(in: sceneView)
-        
         let hitTestRes = sceneView.hitTest(point, types: ARHitTestResult.ResultType.existingPlaneUsingExtent)
         
         if hitTestRes.isEmpty {
@@ -56,20 +71,39 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         placeModel(on: hitTestRes.first!)
     }
     
+    @objc func handlePan(from sender: UIPanGestureRecognizer) {
+        if modelPlaced != nil, var modelPos = modelPos {
+            let translation = sender.translation(in: view)
+            
+            switch sender.state {
+            case .began, .changed:
+                modelPos = SCNVector3Make(modelPos.x + Float(translation.x) * 0.005, modelPos.y, modelPos.z + Float(translation.y) * 0.005)
+                
+                modelPlaced?.worldPosition = modelPos
+                
+            case .cancelled:
+                modelPos = modelPlaced!.worldPosition
+                break
+                
+            default: break
+            }
+            
+        }
+    }
+    
     func placeModel(on plane: ARHitTestResult) {
-        
-        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true) {
-            model.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y, plane.worldTransform.columns.3.z)
+        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true), modelPlaced == nil {
+            let pos = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.001, plane.worldTransform.columns.3.z)
             model.rotateCool()
-            model.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-            model.physicsBody?.mass = 2
             self.sceneView.scene.rootNode.addChildNode(model)
+            model.position = pos
+            modelPlaced = model
+            modelOrigin = pos
+            modelPos = pos
         }
     }
 
     // MARK: - ARSCNViewDelegate
-    
-    var nbool = false
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if let anchor = anchor as? ARPlaneAnchor {
@@ -84,6 +118,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             plane.update(with: anchor)
         }
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
+            self.sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 1000
+        }
+    }
+    
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

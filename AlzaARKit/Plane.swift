@@ -13,11 +13,11 @@ import ARKit
 class Plane: SCNNode {
     
     let anchor: ARPlaneAnchor
-    let planeGeometry: SCNBox
+    let planeGeometry: SCNPlane
     
     init(anchor: ARPlaneAnchor) {
         self.anchor = anchor
-        self.planeGeometry = SCNBox(width: CGFloat(anchor.extent.x), height: 0.01, length: CGFloat(anchor.extent.z), chamferRadius: 0)
+        self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         super.init()
         
         let planeNode = SCNNode(geometry: planeGeometry)
@@ -28,7 +28,7 @@ class Plane: SCNNode {
         addChildNode(planeNode)
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.blue.withAlphaComponent(0.8)
+        material.diffuse.contents = UIColor.white.withAlphaComponent(0.4)
         planeGeometry.materials = [material]
     }
     
