@@ -10,6 +10,16 @@
 		010FC2DB1F31EF96004A9A74 /* v_uv.png in Resources */ = {isa = PBXBuildFile; fileRef = 010FC2D91F31EF95004A9A74 /* v_uv.png */; };
 		010FC2DC1F31EF96004A9A74 /* tv.dae in Resources */ = {isa = PBXBuildFile; fileRef = 010FC2DA1F31EF95004A9A74 /* tv.dae */; };
 		01458E7A1F2FA17900E04962 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01458E791F2FA17900E04962 /* Plane.swift */; };
+		017C152D1F348CD400DB18E2 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C152C1F348C4E00DB18E2 /* VirtualObject.swift */; };
+		017C152E1F348CD700DB18E2 /* VirtualObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C152B1F348C4E00DB18E2 /* VirtualObjectManager.swift */; };
+		017C15301F348D1C00DB18E2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C152F1F348D1C00DB18E2 /* Utilities.swift */; };
+		017C153A1F348D5C00DB18E2 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C15361F348D4200DB18E2 /* Gesture.swift */; };
+		017C153B1F348D5F00DB18E2 /* SingleFingerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C15371F348D4200DB18E2 /* SingleFingerGesture.swift */; };
+		017C153C1F348D6200DB18E2 /* TwoFingerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C15381F348D4200DB18E2 /* TwoFingerGesture.swift */; };
+		017C153D1F348D6F00DB18E2 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C15331F348D4200DB18E2 /* FocusSquare.swift */; };
+		017C153E1F348D7200DB18E2 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C15341F348D4200DB18E2 /* FocusSquareSegment.swift */; };
+		017C15401F348DB200DB18E2 /* ARSCNView+HitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017C153F1F348D9600DB18E2 /* ARSCNView+HitTests.swift */; };
+		017C15421F34A49100DB18E2 /* alza-lednice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 017C15411F34A3E100DB18E2 /* alza-lednice.jpg */; };
 		01CFDEAC1F2F8754006DDEDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */; };
 		01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEAD1F2F8754006DDEDF /* art.scnassets */; };
 		01CFDEB01F2F8754006DDEDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFDEAF1F2F8754006DDEDF /* ViewController.swift */; };
@@ -22,6 +32,17 @@
 		010FC2D91F31EF95004A9A74 /* v_uv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_uv.png; path = ../v_uv.png; sourceTree = "<group>"; };
 		010FC2DA1F31EF95004A9A74 /* tv.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = tv.dae; path = ../tv.dae; sourceTree = "<group>"; };
 		01458E791F2FA17900E04962 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		017C152B1F348C4E00DB18E2 /* VirtualObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectManager.swift; sourceTree = "<group>"; };
+		017C152C1F348C4E00DB18E2 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		017C152F1F348D1C00DB18E2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		017C15331F348D4200DB18E2 /* FocusSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		017C15341F348D4200DB18E2 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		017C15361F348D4200DB18E2 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
+		017C15371F348D4200DB18E2 /* SingleFingerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFingerGesture.swift; sourceTree = "<group>"; };
+		017C15381F348D4200DB18E2 /* TwoFingerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFingerGesture.swift; sourceTree = "<group>"; };
+		017C15391F348D4200DB18E2 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		017C153F1F348D9600DB18E2 /* ARSCNView+HitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARSCNView+HitTests.swift"; sourceTree = "<group>"; };
+		017C15411F34A3E100DB18E2 /* alza-lednice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "alza-lednice.jpg"; sourceTree = "<group>"; };
 		01CFDEA81F2F8754006DDEDF /* AlzaARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzaARKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01CFDEAD1F2F8754006DDEDF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -60,6 +81,45 @@
 			path = TV;
 			sourceTree = "<group>";
 		};
+		017C152A1F348C4500DB18E2 /* Virtual Objects */ = {
+			isa = PBXGroup;
+			children = (
+				017C152C1F348C4E00DB18E2 /* VirtualObject.swift */,
+				017C152B1F348C4E00DB18E2 /* VirtualObjectManager.swift */,
+			);
+			path = "Virtual Objects";
+			sourceTree = "<group>";
+		};
+		017C15311F348D4200DB18E2 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				017C153F1F348D9600DB18E2 /* ARSCNView+HitTests.swift */,
+				017C15321F348D4200DB18E2 /* Focus Squares */,
+				017C15351F348D4200DB18E2 /* Gestures */,
+				017C15391F348D4200DB18E2 /* Plane.swift */,
+			);
+			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		017C15321F348D4200DB18E2 /* Focus Squares */ = {
+			isa = PBXGroup;
+			children = (
+				017C15331F348D4200DB18E2 /* FocusSquare.swift */,
+				017C15341F348D4200DB18E2 /* FocusSquareSegment.swift */,
+			);
+			path = "Focus Squares";
+			sourceTree = "<group>";
+		};
+		017C15351F348D4200DB18E2 /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				017C15361F348D4200DB18E2 /* Gesture.swift */,
+				017C15371F348D4200DB18E2 /* SingleFingerGesture.swift */,
+				017C15381F348D4200DB18E2 /* TwoFingerGesture.swift */,
+			);
+			path = Gestures;
+			sourceTree = "<group>";
+		};
 		01CFDE9F1F2F8754006DDEDF = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +139,10 @@
 		01CFDEAA1F2F8754006DDEDF /* AlzaARKit */ = {
 			isa = PBXGroup;
 			children = (
+				017C15411F34A3E100DB18E2 /* alza-lednice.jpg */,
+				017C15311F348D4200DB18E2 /* UI Elements */,
+				017C152F1F348D1C00DB18E2 /* Utilities.swift */,
+				017C152A1F348C4500DB18E2 /* Virtual Objects */,
 				01458E731F2F90B100E04962 /* Models */,
 				01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */,
 				01CFDEAD1F2F8754006DDEDF /* art.scnassets */,
@@ -156,6 +220,7 @@
 				01CFDEB81F2F8754006DDEDF /* LaunchScreen.storyboard in Resources */,
 				01CFDEB51F2F8754006DDEDF /* Assets.xcassets in Resources */,
 				01CFDEB31F2F8754006DDEDF /* Main.storyboard in Resources */,
+				017C15421F34A49100DB18E2 /* alza-lednice.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,9 +231,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017C153C1F348D6200DB18E2 /* TwoFingerGesture.swift in Sources */,
+				017C153B1F348D5F00DB18E2 /* SingleFingerGesture.swift in Sources */,
+				017C153A1F348D5C00DB18E2 /* Gesture.swift in Sources */,
+				017C15301F348D1C00DB18E2 /* Utilities.swift in Sources */,
+				017C15401F348DB200DB18E2 /* ARSCNView+HitTests.swift in Sources */,
+				017C152D1F348CD400DB18E2 /* VirtualObject.swift in Sources */,
 				01CFDEB01F2F8754006DDEDF /* ViewController.swift in Sources */,
 				01458E7A1F2FA17900E04962 /* Plane.swift in Sources */,
+				017C152E1F348CD700DB18E2 /* VirtualObjectManager.swift in Sources */,
 				01CFDEAC1F2F8754006DDEDF /* AppDelegate.swift in Sources */,
+				017C153D1F348D6F00DB18E2 /* FocusSquare.swift in Sources */,
+				017C153E1F348D7200DB18E2 /* FocusSquareSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

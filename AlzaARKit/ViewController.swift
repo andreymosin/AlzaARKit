@@ -23,18 +23,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         didSet {
             if let pos = modelPos {
                 modelPlaced?.worldPosition = pos
-                
-                
                 print("Current Position: \(modelPlaced?.position)")
             }
         }
     }
     
+    let objManager = VirtualObjectManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
         sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        
         
         sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(from:))))
         sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePan(from:))))
@@ -92,15 +92,68 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func placeModel(on plane: ARHitTestResult) {
-        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true), modelPlaced == nil {
-            let pos = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.001, plane.worldTransform.columns.3.z)
-            model.rotateCool()
-            self.sceneView.scene.rootNode.addChildNode(model)
-            model.position = pos
-            modelPlaced = model
-            modelOrigin = pos
-            modelPos = pos
-        }
+//        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true), modelPlaced == nil {
+//            let pos = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.001, plane.worldTransform.columns.3.z)
+//            model.rotateCool()
+//            self.sceneView.scene.rootNode.addChildNode(model)
+//            model.position = pos
+//            modelPlaced = model
+//            modelOrigin = pos
+//            modelPos = pos
+//        }
+        
+        let cube = SCNBox(width: 0.6, height: 0.6, length: 1.80, chamferRadius: 0)
+        
+        let color = UIImage(named: "1")?.getPixelColor(atLocation: CGPoint(x: 150, y: 5), withFrameSize: CGSize(width: 1, height: 1))
+        let mat = SCNMaterial()
+        mat.diffuse.contents = color
+        mat.lightingModel = .blinn
+        
+        
+        let material1 = SCNMaterial()
+        material1.diffuse.contents = color
+        material1.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
+        
+        let material2 = SCNMaterial()
+        material2.diffuse.contents = color
+        material2.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
+        
+        let material3 = SCNMaterial()
+        material3.diffuse.contents = color
+        material3.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
+        
+        let material4 = SCNMaterial()
+        material4.diffuse.contents = color
+        material4.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
+        
+        let material5 = SCNMaterial()
+        material5.diffuse.contents = color
+        material5.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
+        
+        let material6 = SCNMaterial()
+        material6.diffuse.contents = UIImage(named: "6")
+        
+        cube.materials = [mat, mat, mat, mat, mat, material6]
+        let node = SCNNode(geometry: cube)
+        
+        node.rotateCool()
+        
+        self.sceneView.scene.rootNode.addChildNode(node)
+        node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.9, plane.worldTransform.columns.3.z)
+    }
+    
+    // Gesture Recognizers
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
     }
 
     // MARK: - ARSCNViewDelegate
@@ -141,4 +194,47 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+}
+
+extension UIImage {
+    func rotate(by degrees: CGFloat) -> UIImage {
+        let size = self.size
+        
+        UIGraphicsBeginImageContext(size)
+        
+        let bitmap: CGContext = UIGraphicsGetCurrentContext()!
+        //Move the origin to the middle of the image so we will rotate and scale around the center.
+        bitmap.translateBy(x: size.width / 2, y: size.height / 2)
+        //Rotate the image context
+        bitmap.rotate(by: (degrees * CGFloat(Float.pi / 180)))
+        //Now, draw the rotated/scaled image into the context
+        bitmap.scaleBy(x: 1.0, y: -1.0)
+        
+        let origin = CGPoint(x: -size.width / 2, y: -size.width / 2)
+        
+        bitmap.draw(self.cgImage!, in: CGRect(origin: origin, size: size))
+        
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    func getPixelColor(atLocation location: CGPoint, withFrameSize size: CGSize) -> UIColor {
+        let x = location.x
+        let y = location.y
+        
+        let pixelPoint: CGPoint = CGPoint(x: x, y: y)
+        
+        let pixelData = self.cgImage!.dataProvider!.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        let pixelIndex: Int = ((Int(self.size.width) * Int(pixelPoint.y)) + Int(pixelPoint.x)) * 4
+        
+        let r = CGFloat(data[pixelIndex]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelIndex+1]) / CGFloat(255.0)
+        let b = CGFloat(data[pixelIndex+2]) / CGFloat(255.0)
+        let a = CGFloat(data[pixelIndex+3]) / CGFloat(255.0)
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
 }
