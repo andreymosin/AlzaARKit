@@ -109,27 +109,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         mat.diffuse.contents = color
         mat.lightingModel = .blinn
         
-        
-        let material1 = SCNMaterial()
-        material1.diffuse.contents = color
-        material1.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
-        
-        let material2 = SCNMaterial()
-        material2.diffuse.contents = color
-        material2.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
-        
-        let material3 = SCNMaterial()
-        material3.diffuse.contents = color
-        material3.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
-        
-        let material4 = SCNMaterial()
-        material4.diffuse.contents = color
-        material4.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
-        
-        let material5 = SCNMaterial()
-        material5.diffuse.contents = color
-        material5.diffuse.contentsTransform = SCNMatrix4MakeScale(-1,1,1)
-        
         let material6 = SCNMaterial()
         material6.diffuse.contents = UIImage(named: "6")
         
