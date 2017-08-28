@@ -8,7 +8,9 @@
 
 import UIKit
 import SceneKit
+import SceneKit.ModelIO
 import ARKit
+import ModelIO
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -28,8 +30,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    let objManager = VirtualObjectManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
@@ -47,7 +47,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingSessionConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         
         // Run the view's session
@@ -92,33 +92,53 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func placeModel(on plane: ARHitTestResult) {
-//        if let model = SCNScene(named: "tv.dae")?.rootNode.childNode(withName: "tv", recursively: true), modelPlaced == nil {
-//            let pos = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.001, plane.worldTransform.columns.3.z)
-//            model.rotateCool()
-//            self.sceneView.scene.rootNode.addChildNode(model)
-//            model.position = pos
-//            modelPlaced = model
-//            modelOrigin = pos
-//            modelPos = pos
-//        }
         
-        let cube = SCNBox(width: 0.6, height: 0.6, length: 1.80, chamferRadius: 0)
+        let material = SCNMaterial()
+        material.lightingModel = .physicallyBased
+        material.diffuse.contents = UIImage.init(named: "albedo")
+        material.roughness.contents = UIImage.init(named: "ao")
+        material.metalness.contents = UIImage.init(named: "metalness")
+        material.normal.contents = UIImage.init(named: "normal")
         
-        let color = UIImage(named: "1")?.getPixelColor(atLocation: CGPoint(x: 150, y: 5), withFrameSize: CGSize(width: 1, height: 1))
-        let mat = SCNMaterial()
-        mat.diffuse.contents = color
-        mat.lightingModel = .blinn
+        let whiteMat = SCNMaterial()
+        whiteMat.diffuse.contents = UIColor.white
         
-        let material6 = SCNMaterial()
-        material6.diffuse.contents = UIImage(named: "6")
+            if let url = Bundle.main.url(forResource: "1", withExtension: "obj") {
+                do {
+                    let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.copy() as! SCNNode
+                    
+                    let geo = SCNGeometry(mdlMesh: MDLMesh.init(scnNode: node))
+                    geo.firstMaterial = whiteMat
+                    let nn = SCNNode.init(geometry: geo)
+                    nn.rotateCool()
+                    print(nn)
+//                    node.rotateCool()
+                    sceneView.scene.rootNode.addChildNode(nn)
+                    nn.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.9, plane.worldTransform.columns.3.z)
+                } catch {
+                    print(error)
+                }
+            }
         
-        cube.materials = [mat, mat, mat, mat, mat, material6]
-        let node = SCNNode(geometry: cube)
         
-        node.rotateCool()
-        
-        self.sceneView.scene.rootNode.addChildNode(node)
-        node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.9, plane.worldTransform.columns.3.z)
+        //Lednicka
+//        let cube = SCNBox(width: 0.6, height: 0.6, length: 1.80, chamferRadius: 0)
+//
+//        let color = UIImage(named: "1")?.getPixelColor(atLocation: CGPoint(x: 150, y: 5), withFrameSize: CGSize(width: 1, height: 1))
+//        let mat = SCNMaterial()
+//        mat.diffuse.contents = color
+//        mat.lightingModel = .blinn
+//
+//        let material6 = SCNMaterial()
+//        material6.diffuse.contents = UIImage(named: "6")
+//
+//        cube.materials = [mat, mat, mat, mat, mat, material6]
+//        let node = SCNNode(geometry: cube)
+//
+//        node.rotateCool()
+//
+//        self.sceneView.scene.rootNode.addChildNode(node)
+//        node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.9, plane.worldTransform.columns.3.z)
     }
     
     // Gesture Recognizers
