@@ -10,6 +10,12 @@
 		010FC2DB1F31EF96004A9A74 /* v_uv.png in Resources */ = {isa = PBXBuildFile; fileRef = 010FC2D91F31EF95004A9A74 /* v_uv.png */; };
 		010FC2DC1F31EF96004A9A74 /* tv.dae in Resources */ = {isa = PBXBuildFile; fileRef = 010FC2DA1F31EF95004A9A74 /* tv.dae */; };
 		01458E7A1F2FA17900E04962 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01458E791F2FA17900E04962 /* Plane.swift */; };
+		014C08A91F55BB5A00973DE3 /* metalness_inverted.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A71F55BAF300973DE3 /* metalness_inverted.jpg */; };
+		014C08AA1F55BB5D00973DE3 /* metalness.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A31F55BAF200973DE3 /* metalness.jpg */; };
+		014C08AB1F55BB5F00973DE3 /* normals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A41F55BAF200973DE3 /* normals.jpg */; };
+		014C08AC1F55BB6200973DE3 /* TEFZN017_u1_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A51F55BAF300973DE3 /* TEFZN017_u1_v1.png */; };
+		014C08AD1F55BB6400973DE3 /* TEFZN017.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A61F55BAF300973DE3 /* TEFZN017.mtl */; };
+		014C08AE1F55BB6800973DE3 /* TEFZN017.obj in Resources */ = {isa = PBXBuildFile; fileRef = 014C08A81F55BAF300973DE3 /* TEFZN017.obj */; };
 		015162111F54339900EB5524 /* 1.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0151620D1F54339600EB5524 /* 1.obj */; };
 		015162121F54339C00EB5524 /* 2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0151620A1F54339500EB5524 /* 2.obj */; };
 		015162131F54339F00EB5524 /* 3.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0151620C1F54339600EB5524 /* 3.obj */; };
@@ -30,6 +36,12 @@
 		010FC2D91F31EF95004A9A74 /* v_uv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = v_uv.png; path = ../v_uv.png; sourceTree = "<group>"; };
 		010FC2DA1F31EF95004A9A74 /* tv.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = tv.dae; path = ../tv.dae; sourceTree = "<group>"; };
 		01458E791F2FA17900E04962 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		014C08A31F55BAF200973DE3 /* metalness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metalness.jpg; sourceTree = "<group>"; };
+		014C08A41F55BAF200973DE3 /* normals.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normals.jpg; sourceTree = "<group>"; };
+		014C08A51F55BAF300973DE3 /* TEFZN017_u1_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TEFZN017_u1_v1.png; sourceTree = "<group>"; };
+		014C08A61F55BAF300973DE3 /* TEFZN017.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = TEFZN017.mtl; sourceTree = "<group>"; };
+		014C08A71F55BAF300973DE3 /* metalness_inverted.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metalness_inverted.jpg; sourceTree = "<group>"; };
+		014C08A81F55BAF300973DE3 /* TEFZN017.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = TEFZN017.obj; sourceTree = "<group>"; };
 		0151620A1F54339500EB5524 /* 2.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2.obj; sourceTree = "<group>"; };
 		0151620B1F54339500EB5524 /* modra.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = modra.mtl; sourceTree = "<group>"; };
 		0151620C1F54339600EB5524 /* 3.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = 3.obj; sourceTree = "<group>"; };
@@ -66,7 +78,8 @@
 		01458E731F2F90B100E04962 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				015162031F541D9000EB5524 /* Kostky dohromady */,
+				014C088C1F55B21400973DE3 /* Iron */,
+				015162031F541D9000EB5524 /* Kostky Zvlast */,
 				01458E741F2F90BA00E04962 /* TV */,
 			);
 			path = Models;
@@ -81,7 +94,20 @@
 			path = TV;
 			sourceTree = "<group>";
 		};
-		015162031F541D9000EB5524 /* Kostky dohromady */ = {
+		014C088C1F55B21400973DE3 /* Iron */ = {
+			isa = PBXGroup;
+			children = (
+				014C08A71F55BAF300973DE3 /* metalness_inverted.jpg */,
+				014C08A31F55BAF200973DE3 /* metalness.jpg */,
+				014C08A41F55BAF200973DE3 /* normals.jpg */,
+				014C08A51F55BAF300973DE3 /* TEFZN017_u1_v1.png */,
+				014C08A61F55BAF300973DE3 /* TEFZN017.mtl */,
+				014C08A81F55BAF300973DE3 /* TEFZN017.obj */,
+			);
+			path = Iron;
+			sourceTree = "<group>";
+		};
+		015162031F541D9000EB5524 /* Kostky Zvlast */ = {
 			isa = PBXGroup;
 			children = (
 				0151620D1F54339600EB5524 /* 1.obj */,
@@ -92,7 +118,7 @@
 				015162101F54339600EB5524 /* textura.jpg */,
 				0151620F1F54339600EB5524 /* zlta.mtl */,
 			);
-			path = "Kostky dohromady";
+			path = "Kostky Zvlast";
 			sourceTree = "<group>";
 		};
 		015162181F54455500EB5524 /* PBR */ = {
@@ -201,17 +227,23 @@
 				015162121F54339C00EB5524 /* 2.obj in Resources */,
 				015162161F5433A800EB5524 /* textura.jpg in Resources */,
 				015162171F5433AA00EB5524 /* zlta.mtl in Resources */,
+				014C08AB1F55BB5F00973DE3 /* normals.jpg in Resources */,
 				010FC2DC1F31EF96004A9A74 /* tv.dae in Resources */,
 				01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */,
 				010FC2DB1F31EF96004A9A74 /* v_uv.png in Resources */,
 				01CFDEB81F2F8754006DDEDF /* LaunchScreen.storyboard in Resources */,
 				015162131F54339F00EB5524 /* 3.obj in Resources */,
+				014C08AA1F55BB5D00973DE3 /* metalness.jpg in Resources */,
 				015162141F5433A200EB5524 /* cervena.mtl in Resources */,
+				014C08AD1F55BB6400973DE3 /* TEFZN017.mtl in Resources */,
+				014C08AE1F55BB6800973DE3 /* TEFZN017.obj in Resources */,
 				01CFDEB51F2F8754006DDEDF /* Assets.xcassets in Resources */,
 				01CFDEB31F2F8754006DDEDF /* Main.storyboard in Resources */,
+				014C08A91F55BB5A00973DE3 /* metalness_inverted.jpg in Resources */,
 				017C15421F34A49100DB18E2 /* alza-lednice.jpg in Resources */,
 				015162111F54339900EB5524 /* 1.obj in Resources */,
 				015162151F5433A500EB5524 /* modra.mtl in Resources */,
+				014C08AC1F55BB6200973DE3 /* TEFZN017_u1_v1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

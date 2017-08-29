@@ -30,6 +30,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    var ambientLight = SCNLight()
+    var pointLight = SCNLight()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.delegate = self
@@ -39,8 +42,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap(from:))))
         sceneView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePan(from:))))
         
+        ambientLight.type = .ambient
         
-        self.sceneView.automaticallyUpdatesLighting = false
+//        let node = SCNNode()
+//        node.light = ambientLight
+//        self.sceneView.scene.rootNode.addChildNode(node)
+//
+        self.sceneView.scene.lightingEnvironment.contents = UIImage.init(named: "TunnelHDRI")
+        
+        self.sceneView.automaticallyUpdatesLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +59,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
+        configuration.isLightEstimationEnabled = true
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+    }
+    
+    func addSpotLight(at position: SCNVector3) {
+        pointLight.type = .spot
+        pointLight.spotInnerAngle = 180
+        pointLight.spotOuterAngle = 180
+        
+        let spotNode = SCNNode()
+        spotNode.light = pointLight
+        spotNode.position = position
+        
+        spotNode.eulerAngles = SCNVector3Make(-Float.pi / 2, 0, 0)
+        sceneView.scene.rootNode.addChildNode(spotNode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,32 +118,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func placeModel(on plane: ARHitTestResult) {
         
-        let material = SCNMaterial()
-        material.lightingModel = .physicallyBased
-        material.diffuse.contents = UIImage.init(named: "albedo")
-        material.roughness.contents = UIImage.init(named: "ao")
-        material.metalness.contents = UIImage.init(named: "metalness")
-        material.normal.contents = UIImage.init(named: "normal")
-        
-        let whiteMat = SCNMaterial()
-        whiteMat.diffuse.contents = UIColor.white
-        
-            if let url = Bundle.main.url(forResource: "1", withExtension: "obj") {
-                do {
-                    let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.copy() as! SCNNode
-                    
-                    let geo = SCNGeometry(mdlMesh: MDLMesh.init(scnNode: node))
-                    geo.firstMaterial = whiteMat
-                    let nn = SCNNode.init(geometry: geo)
-                    nn.rotateCool()
-                    print(nn)
-//                    node.rotateCool()
-                    sceneView.scene.rootNode.addChildNode(nn)
-                    nn.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.9, plane.worldTransform.columns.3.z)
-                } catch {
-                    print(error)
-                }
+        if let url = Bundle.main.url(forResource: "TEFZN017", withExtension: "obj") {
+            do {
+                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
+                
+                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+                
+                node.rotateCool()
+                sceneView.scene.rootNode.addChildNode(node)
+                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
+            } catch {
+                print(error)
             }
+        }
         
         
         //Lednicka
@@ -173,7 +185,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
-            self.sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 1000
+//            ambientLight.intensity = lightEstimate.ambientIntensity
+//            pointLight.intensity = lightEstimate.ambientIntensity
+            
+            sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 250
         }
     }
     
