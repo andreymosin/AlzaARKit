@@ -48,7 +48,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        node.light = ambientLight
 //        self.sceneView.scene.rootNode.addChildNode(node)
 //
-        self.sceneView.scene.lightingEnvironment.contents = UIImage.init(named: "TunnelHDRI")
+        self.sceneView.scene.lightingEnvironment.contents = UIImage.init(named: "RoomHDRI")
         
         self.sceneView.automaticallyUpdatesLighting = true
     }
@@ -118,11 +118,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func placeModel(on plane: ARHitTestResult) {
         
-        if let url = Bundle.main.url(forResource: "TEFZN017", withExtension: "obj") {
+//        //Sphere
+//        let geometry = SCNSphere.init(radius: 0.1)
+//
+//        let mat = SCNMaterial.init()
+//        mat.lightingModel = .physicallyBased
+//        mat.diffuse.contents = UIImage.init(named: "rusedIron-albedo")
+//        mat.metalness.contents = UIImage.init(named: "rusedIron-metal")
+//        mat.roughness.contents = UIImage.init(named: "rusedIron-rough")
+//        mat.normal.contents = UIImage.init(named: "rusedIron-normal")
+//
+//        geometry.firstMaterial = mat
+//
+//        let node = SCNNode.init(geometry: geometry)
+//        sceneView.scene.rootNode.addChildNode(node)
+//        node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 1, plane.worldTransform.columns.3.z)
+        
+        //Camera
+        if let url = Bundle.main.url(forResource: "Camera", withExtension: "obj") {
             do {
                 let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
                 
+                node.scale = SCNVector3Make(0.1, 0.1, 0.1)
+                
                 node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "cam_metalness")
                 
                 node.rotateCool()
                 sceneView.scene.rootNode.addChildNode(node)
@@ -131,6 +151,38 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print(error)
             }
         }
+        
+        
+////        Zehlicka
+//        if let url = Bundle.main.url(forResource: "TEFZN017", withExtension: "obj") {
+//            do {
+//                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
+//
+//                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+//                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness")
+//
+//                node.rotateCool()
+//                sceneView.scene.rootNode.addChildNode(node)
+//                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
+//            } catch {
+//                print(error)
+//            }
+//        }
+//
+//        if let url = Bundle.main.url(forResource: "podstavec", withExtension: "obj") {
+//            do {
+//                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
+//
+//                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+//                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness_inverted")
+//
+//                node.rotateCool()
+//                sceneView.scene.rootNode.addChildNode(node)
+//                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
+//            } catch {
+//                print(error)
+//            }
+//        }
         
         
         //Lednicka
@@ -185,10 +237,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
-//            ambientLight.intensity = lightEstimate.ambientIntensity
-//            pointLight.intensity = lightEstimate.ambientIntensity
-            
-            sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 250
+            sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 1000
         }
     }
     

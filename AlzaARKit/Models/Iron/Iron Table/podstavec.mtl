@@ -1,13 +1,14 @@
-# Blender MTL File: 'test.blend'
+# Blender MTL File: 'TEFZN017.blend'
 # Material Count: 1
 
-newmtl Material
-Ns 47.058824
+newmtl Material.004
+Ns 96.078431
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
-illum 3
-map_Kd textura.jpg
+illum 2
+map_Kd TEXTURE_CONCRETE.jpg
+map_Bump normals.jpg
