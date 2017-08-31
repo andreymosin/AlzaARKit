@@ -11,6 +11,7 @@ import SceneKit
 import SceneKit.ModelIO
 import ARKit
 import ModelIO
+import CoreMotion
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
@@ -118,6 +119,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func placeModel(on plane: ARHitTestResult) {
         
+        let scale = SCNVector3Make(0.05, 0.05, 0.05)
+        
 //        //Sphere
 //        let geometry = SCNSphere.init(radius: 0.1)
 //
@@ -135,15 +138,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 1, plane.worldTransform.columns.3.z)
         
         //Camera
-        if let url = Bundle.main.url(forResource: "Camera", withExtension: "obj") {
+//        if let url = Bundle.main.url(forResource: "kamera", withExtension: "obj") {
+//            do {
+//                for node in try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes {
+//                    print("fuk")
+//                    node.rotateCool()
+//                    sceneView.scene.rootNode.addChildNode(node)
+//                    node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 1, plane.worldTransform.columns.3.z)
+//                    node.scale = scale
+//                    node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+//                    node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness_inverted")
+//                }
+//            } catch {
+//                print(error)
+//            }
+//        }
+        
+        
+//        Zehlicka
+        if let url = Bundle.main.url(forResource: "TEFZN017", withExtension: "obj") {
             do {
                 let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
-                
-                node.scale = SCNVector3Make(0.1, 0.1, 0.1)
-                
+
                 node.geometry?.firstMaterial?.lightingModel = .physicallyBased
-                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "cam_metalness")
-                
+                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness")
+
                 node.rotateCool()
                 sceneView.scene.rootNode.addChildNode(node)
                 node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
@@ -151,38 +170,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print(error)
             }
         }
-        
-        
-////        Zehlicka
-//        if let url = Bundle.main.url(forResource: "TEFZN017", withExtension: "obj") {
-//            do {
-//                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
-//
-//                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
-//                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness")
-//
-//                node.rotateCool()
-//                sceneView.scene.rootNode.addChildNode(node)
-//                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//
-//        if let url = Bundle.main.url(forResource: "podstavec", withExtension: "obj") {
-//            do {
-//                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
-//
-//                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
-//                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness_inverted")
-//
-//                node.rotateCool()
-//                sceneView.scene.rootNode.addChildNode(node)
-//                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
-//            } catch {
-//                print(error)
-//            }
-//        }
+
+        if let url = Bundle.main.url(forResource: "podstavec", withExtension: "obj") {
+            do {
+                let node = try SCNScene(url: url, options: [.checkConsistency: true]).rootNode.childNodes[0]
+
+                node.geometry?.firstMaterial?.lightingModel = .physicallyBased
+                node.geometry?.firstMaterial?.metalness.contents = UIImage.init(named: "metalness_inverted")
+
+                node.rotateCool()
+                sceneView.scene.rootNode.addChildNode(node)
+                node.position = SCNVector3Make(plane.worldTransform.columns.3.x, plane.worldTransform.columns.3.y + 0.01, plane.worldTransform.columns.3.z)
+            } catch {
+                print(error)
+            }
+        }
         
         
         //Lednicka
@@ -237,7 +239,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if let lightEstimate = sceneView.session.currentFrame?.lightEstimate {
-            sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 1000
+            sceneView.scene.lightingEnvironment.intensity = lightEstimate.ambientIntensity / 500
         }
     }
     

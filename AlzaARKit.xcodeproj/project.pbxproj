@@ -22,6 +22,12 @@
 		014C08C71F56A72F00973DE3 /* TEFZN017.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 014C08C11F56A72200973DE3 /* TEFZN017.mtl */; };
 		014C08C81F56A73200973DE3 /* TEFZN017.obj in Resources */ = {isa = PBXBuildFile; fileRef = 014C08C21F56A72200973DE3 /* TEFZN017.obj */; };
 		014C08C91F56A73600973DE3 /* TEFZN017_u1_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 014C08C31F56A72200973DE3 /* TEFZN017_u1_v1.png */; };
+		0156A0B41F58173800560CBE /* kamera.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0AF1F58173500560CBE /* kamera.mtl */; };
+		0156A0B51F58173C00560CBE /* kamera.obj in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0B01F58173500560CBE /* kamera.obj */; };
+		0156A0B71F58174300560CBE /* normals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0B21F58173500560CBE /* normals.jpg */; };
+		0156A0B81F58174500560CBE /* OC090b31_new_u1_v1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0B31F58173500560CBE /* OC090b31_new_u1_v1.jpg */; };
+		0156A0BC1F581AD600560CBE /* metalness s.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0BB1F581AD200560CBE /* metalness s.jpg */; };
+		0156A0BE1F581C1000560CBE /* metalness Fukk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0156A0BD1F581BFC00560CBE /* metalness Fukk.jpg */; };
 		017C15421F34A49100DB18E2 /* alza-lednice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 017C15411F34A3E100DB18E2 /* alza-lednice.jpg */; };
 		01CFDEAC1F2F8754006DDEDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */; };
 		01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEAD1F2F8754006DDEDF /* art.scnassets */; };
@@ -29,11 +35,6 @@
 		01CFDEB31F2F8754006DDEDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEB11F2F8754006DDEDF /* Main.storyboard */; };
 		01CFDEB51F2F8754006DDEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEB41F2F8754006DDEDF /* Assets.xcassets */; };
 		01CFDEB81F2F8754006DDEDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CFDEB61F2F8754006DDEDF /* LaunchScreen.storyboard */; };
-		01FB16741F56E81000A25654 /* OC090b31zrawu.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 01FB16701F56E7E800A25654 /* OC090b31zrawu.mtl */; };
-		01FB16751F56E81400A25654 /* OC090b31_new_u1_v1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01FB16731F56E7E900A25654 /* OC090b31_new_u1_v1.jpg */; };
-		01FB16761F56E81700A25654 /* normals.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01FB16721F56E7E800A25654 /* normals.jpg */; };
-		01FB16771F56E81A00A25654 /* cam_metalness.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01FB166F1F56E7E800A25654 /* cam_metalness.jpg */; };
-		01FB16781F56E81E00A25654 /* Camera.obj in Resources */ = {isa = PBXBuildFile; fileRef = 01FB16711F56E7E800A25654 /* Camera.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,12 @@
 		0151621D1F5445C800EB5524 /* wornpaintedcement-metalness.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wornpaintedcement-metalness.psd"; sourceTree = "<group>"; };
 		0151621E1F5445C800EB5524 /* wornpaintedcement-albedo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wornpaintedcement-albedo.png"; sourceTree = "<group>"; };
 		0151621F1F5445C800EB5524 /* wornpaintedcement-ao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wornpaintedcement-ao.png"; sourceTree = "<group>"; };
+		0156A0AF1F58173500560CBE /* kamera.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = kamera.mtl; sourceTree = "<group>"; };
+		0156A0B01F58173500560CBE /* kamera.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = kamera.obj; sourceTree = "<group>"; };
+		0156A0B21F58173500560CBE /* normals.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normals.jpg; sourceTree = "<group>"; };
+		0156A0B31F58173500560CBE /* OC090b31_new_u1_v1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OC090b31_new_u1_v1.jpg; sourceTree = "<group>"; };
+		0156A0BB1F581AD200560CBE /* metalness s.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "metalness s.jpg"; sourceTree = "<group>"; };
+		0156A0BD1F581BFC00560CBE /* metalness Fukk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "metalness Fukk.jpg"; sourceTree = "<group>"; };
 		017C15411F34A3E100DB18E2 /* alza-lednice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "alza-lednice.jpg"; sourceTree = "<group>"; };
 		01CFDEA81F2F8754006DDEDF /* AlzaARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlzaARKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01CFDEAB1F2F8754006DDEDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,11 +72,6 @@
 		01CFDEB41F2F8754006DDEDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01CFDEB71F2F8754006DDEDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01CFDEB91F2F8754006DDEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01FB166F1F56E7E800A25654 /* cam_metalness.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cam_metalness.jpg; sourceTree = "<group>"; };
-		01FB16701F56E7E800A25654 /* OC090b31zrawu.mtl */ = {isa = PBXFileReference; lastKnownFileType = text; path = OC090b31zrawu.mtl; sourceTree = "<group>"; };
-		01FB16711F56E7E800A25654 /* Camera.obj */ = {isa = PBXFileReference; lastKnownFileType = text; path = Camera.obj; sourceTree = "<group>"; };
-		01FB16721F56E7E800A25654 /* normals.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normals.jpg; sourceTree = "<group>"; };
-		01FB16731F56E7E900A25654 /* OC090b31_new_u1_v1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OC090b31_new_u1_v1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,7 @@
 		01458E731F2F90B100E04962 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				01FB166E1F56E73900A25654 /* Camera */,
+				0156A0AE1F58173500560CBE /* kamera 3 */,
 				014C08B01F56A6ED00973DE3 /* Iron */,
 				01458E741F2F90BA00E04962 /* TV */,
 			);
@@ -156,6 +158,19 @@
 			path = PBR;
 			sourceTree = "<group>";
 		};
+		0156A0AE1F58173500560CBE /* kamera 3 */ = {
+			isa = PBXGroup;
+			children = (
+				0156A0BD1F581BFC00560CBE /* metalness Fukk.jpg */,
+				0156A0BB1F581AD200560CBE /* metalness s.jpg */,
+				0156A0AF1F58173500560CBE /* kamera.mtl */,
+				0156A0B01F58173500560CBE /* kamera.obj */,
+				0156A0B21F58173500560CBE /* normals.jpg */,
+				0156A0B31F58173500560CBE /* OC090b31_new_u1_v1.jpg */,
+			);
+			path = "kamera 3";
+			sourceTree = "<group>";
+		};
 		01CFDE9F1F2F8754006DDEDF = {
 			isa = PBXGroup;
 			children = (
@@ -188,18 +203,6 @@
 				01458E791F2FA17900E04962 /* Plane.swift */,
 			);
 			path = AlzaARKit;
-			sourceTree = "<group>";
-		};
-		01FB166E1F56E73900A25654 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				01FB16711F56E7E800A25654 /* Camera.obj */,
-				01FB166F1F56E7E800A25654 /* cam_metalness.jpg */,
-				01FB16721F56E7E800A25654 /* normals.jpg */,
-				01FB16731F56E7E900A25654 /* OC090b31_new_u1_v1.jpg */,
-				01FB16701F56E7E800A25654 /* OC090b31zrawu.mtl */,
-			);
-			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,27 +263,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01FB16751F56E81400A25654 /* OC090b31_new_u1_v1.jpg in Resources */,
+				0156A0B71F58174300560CBE /* normals.jpg in Resources */,
 				014C08C71F56A72F00973DE3 /* TEFZN017.mtl in Resources */,
-				01FB16761F56E81700A25654 /* normals.jpg in Resources */,
+				0156A0B51F58173C00560CBE /* kamera.obj in Resources */,
 				014C08C41F56A72800973DE3 /* metalness.jpg in Resources */,
 				010FC2DC1F31EF96004A9A74 /* tv.dae in Resources */,
 				014C08BA1F56A70A00973DE3 /* podstavec.mtl in Resources */,
 				014C08B71F56A70100973DE3 /* metalness_inverted.jpg in Resources */,
 				014C08B91F56A70700973DE3 /* normals.jpg in Resources */,
+				0156A0BC1F581AD600560CBE /* metalness s.jpg in Resources */,
+				0156A0B41F58173800560CBE /* kamera.mtl in Resources */,
 				014C08B81F56A70400973DE3 /* metalness.jpg in Resources */,
 				014C08C61F56A72D00973DE3 /* normals.jpg in Resources */,
 				014C08BC1F56A71000973DE3 /* TEXTURE_CONCRETE.jpg in Resources */,
 				014C08C91F56A73600973DE3 /* TEFZN017_u1_v1.png in Resources */,
 				01CFDEAE1F2F8754006DDEDF /* art.scnassets in Resources */,
 				014C08C81F56A73200973DE3 /* TEFZN017.obj in Resources */,
+				0156A0BE1F581C1000560CBE /* metalness Fukk.jpg in Resources */,
 				010FC2DB1F31EF96004A9A74 /* v_uv.png in Resources */,
-				01FB16771F56E81A00A25654 /* cam_metalness.jpg in Resources */,
 				01CFDEB81F2F8754006DDEDF /* LaunchScreen.storyboard in Resources */,
-				01FB16741F56E81000A25654 /* OC090b31zrawu.mtl in Resources */,
 				01CFDEB51F2F8754006DDEDF /* Assets.xcassets in Resources */,
+				0156A0B81F58174500560CBE /* OC090b31_new_u1_v1.jpg in Resources */,
 				014C08C51F56A72A00973DE3 /* metalness_inverted.jpg in Resources */,
-				01FB16781F56E81E00A25654 /* Camera.obj in Resources */,
 				01CFDEB31F2F8754006DDEDF /* Main.storyboard in Resources */,
 				017C15421F34A49100DB18E2 /* alza-lednice.jpg in Resources */,
 				014C08BB1F56A70D00973DE3 /* podstavec.obj in Resources */,
